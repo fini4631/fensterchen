@@ -10,7 +10,9 @@ int main(int argc, char* argv[])
     }
 
     auto t = win.getTime();
-    float x1(0.5 + 0.5 * std::sin(t));
+	auto m = win.mousePosition();
+    /*
+	float x1(0.5 + 0.5 * std::sin(t));
     float y1(0.5 + 0.5 * std::cos(t));
 
     float x2(0.5 + 0.5 * std::sin(2.0*t));
@@ -31,6 +33,46 @@ int main(int argc, char* argv[])
 
     win.drawLine(m.x, 0.0f, m.x, 0.01f, 0.0, 0.0, 0.0);
     win.drawLine(m.x, 0.99f,m.x, 1.0f, 0.0, 0.0, 0.0);
+	*/
+
+	point2D p(0.5,0.5);
+	point2D p2(0.2, 0.6);
+	point2D p3(0.7, 0.6);
+
+	Color blue(0.0, 0.0, 1.0);
+	Color red(1.0, 0.0, 0.0);
+	Color green(0.0, 0.6, 0.4);
+	Color black(0.0, 0.0, 0.0);
+	Color (0.0, 1.0, 0.0);
+
+	Circle c(p,0.2,green);
+	Circle c2(p2, 0.1, red);
+
+	c.draw(win);
+	c2.draw(win);
+
+	rectangle r(p2, 0.3, 0.2, black);
+	rectangle r2(p3, 0.2, 0.5, Color(0.0, 1.0, 0.0));
+	r.draw(win);
+	r2.draw(win);
+
+	if (c2.is_inside(m.x, m.y))
+	{
+		c2.draw(win, blue);
+	}
+	if (r.is_inside(m.x, m.y))
+	{
+		r.draw(win, blue);
+	}
+	if (c.is_inside(m.x, m.y))
+	{
+		c.draw(win, blue);
+	}
+	if (r2.is_inside(m.x, m.y))
+	{
+		r2.draw(win, blue);
+	}
+
 
     win.update();
   }
